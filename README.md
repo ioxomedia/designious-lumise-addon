@@ -1,4 +1,4 @@
-# designious-lumise-addon
+# Designious Lumise Addon
 The Designious Library Add-on for [Lumise Product Designer](https://codecanyon.net/item/lumise-product-designer-woocommerce-wordpress/21222684) 
 
 How to use:
