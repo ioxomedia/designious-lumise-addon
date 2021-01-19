@@ -1,7 +1,7 @@
 # designious-lumise-addon
 The Designious Library Add-on for Lumise 
 
-How to use:
+<p>How to use:</<p>
 Download the add-on.
 Upload the add-on via the Lumise Add-on section.
 Enter your API key we provide and the url: https://apiv1.designious.com
