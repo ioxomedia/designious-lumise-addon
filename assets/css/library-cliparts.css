@@ -1,0 +1,119 @@
+#lumise-workspace div#lumise-left #lumise-cliparts.lumise-tab-body-wrp>header {
+    display: inline-block;
+    margin: 10px 20px 0;
+    width: calc(100% - 40px);
+    border-top: none;
+    padding: 0;
+}
+
+#lumise-left #lumise-cliparts header>button {
+    margin: 10px 0px;
+    text-transform: inherit;
+    font-weight: normal;
+    font-size: 15px;
+    width: 50%;
+    white-space: nowrap;
+    float: left;
+    padding: 10px 12px;
+    border: none;
+    cursor: pointer;
+    background: #eee;
+    outline: none !important;
+}
+
+#lumise-left #lumise-cliparts>header>button {
+    width: calc(50% - 1px);
+    margin-left: 1px;
+    padding: 8px 0px;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#lumise-left #lumise-cliparts>header>button:last-child {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+#lumise-left #lumise-cliparts>header>button.active,
+#lumise-left #lumise-cliparts>header>button:hover {
+    background: #3fc7ba;
+    color: #eee;
+    position: relative;
+}
+#lumise-left #lumise-cliparts .cliparts-tab.active {
+    display: block;
+}
+#lumise-left #lumise-cliparts .cliparts-tab {
+    display: none;
+}
+#lumise-left #lumise-cliparts .cliparts-tab header {
+    display: inline-block;
+    width: 100%;
+    padding: 20px 20px 10px 20px;
+}
+#lumise-left #lumise-cliparts .cliparts-tab header .lumise-cliparts-search {
+    position: relative;
+    height: 48px;
+    width: 100%;
+    float: left;
+    z-index: 1000;
+}
+#lumise-left #lumise-cliparts .lumise-clipart-categories {
+    position: relative;
+}
+#lumise-left #lumise-cliparts .lumise-clipart-categories > button {
+    width: 100%;
+    height: 36px;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: left;
+    padding: 0 14px;
+    position: relative;
+    background: transparent;
+    color: #ccc;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+#lumise-left #lumise-cliparts #lumise-designious-cliparts-list {
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 5px 20px;
+    text-align: center;
+    overflow-y: scroll;
+    max-height: calc(100vh - 232px);
+    overflow-x: hidden;
+}
+#lumise-left #lumise-cliparts header button.active:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    border: 8px solid transparent;
+    border-top: 8px solid #3fc7ba;
+    transform: translateX(-50%);
+}
+
+#lumise-designious-cliparts-list ul.lumise-list-items li i {
+    display: none;
+}
+#lumise-left #lumise-cliparts div.cliparts-tab .lumise-clipart-categories button i.lumisex-ios-arrow-forward {
+    float: right;
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 32px;
+    border-left: 2px solid rgb(101, 107, 117);
+    line-height: 36px;
+    padding: 0 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #eee;
+    transition: all 250ms ease;
+}

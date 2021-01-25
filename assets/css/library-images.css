@@ -1,0 +1,18 @@
+#lumise-left #lumise-uploads header>button {
+    margin-right: 1px;
+    width: 35% !important;
+}
+#lumise-left #lumise-uploads header>button:first-child {
+    width: 28% !important;
+}
+#lumise-left #lumise-uploads header>button:last-child {
+    width: 36% !important;
+    margin-right: 0;
+}
+#lumise-left #lumise-uploads #lumise-designious-list {
+    max-height: calc(100vh - 232px);
+}
+
+#lumise-designious-list ul.lumise-list-items li i {
+    display: none;
+}

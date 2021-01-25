@@ -1,0 +1,16 @@
+#lumise-left #lumise-uploads>header>button {
+    width: calc(20% - 1px);
+}
+#lumise-left #lumise-uploads>header>button:first-child {
+    width: 20%;
+}
+#lumise-left #lumise-uploads>header>button>i.lumise-icon-feed::after {
+    content: "\a";
+    white-space: pre;
+}
+#lumise-left #lumise-uploads #lumise-designious-list {
+    max-height: calc(100vh - 232px);
+}
+#lumise-left #lumise-designious-list ul.lumise-list-items li i {
+    display: none;
+}
