@@ -15,11 +15,12 @@ class lumise_addon_designious_library extends lumise_addons {
 
 		$this->access_corejs('lumise_addon_designiousLibrary');
 
-		$lumise->add_filter('editor_menus', array(&$this, 'editor_menus'), 20);
-		$lumise->add_action('editor-header', array(&$this, 'editor_header'), 20);
-		$lumise->add_action('editor-footer', array(&$this, 'editor_footer'), 20);
+		$lumise->add_filter('editor_menus', [ &$this, 'editor_menus'  ], 20);
+		$lumise->add_filter('print-nav', [ &$this, 'disable_print_nav' ], 20);
+		$lumise->add_action('editor-header', [ &$this, 'editor_header' ], 20);
+		$lumise->add_action('editor-footer', [ &$this, 'editor_footer' ], 20);
 
-		$lumise->add_action('addon-ajax', array(&$this, 'ajax_action'));
+		$lumise->add_action('addon-ajax', [ &$this, 'ajax_action' ]);
 
 		if ($lumise->connector->platform == 'woocommerce') {
 			$role = get_role('administrator');
@@ -195,7 +196,7 @@ class lumise_addon_designious_library extends lumise_addons {
 		$hierarchy = get_transient('_transient_designious_library_folders');
 		if ($hierarchy === false) {
 			$hierarchy = $this->getApi()->getFolders();
-			set_transient('_transient_designious_library_folders', $hierarchy, 3600);
+			set_transient('_transient_designious_library_folders', $hierarchy, 300);
 		}
 
 		$folders = json_decode($hierarchy, true);
@@ -204,7 +205,7 @@ class lumise_addon_designious_library extends lumise_addons {
 			$categories[] = [
 				'id' => $folder['path'],
 				'name' => $lumise->lang($folder['name']),
-				'thumbnail' => ''
+				'thumbnail' => ! empty($folder['secure_image']) ? $folder['secure_image'] : ''
 			];
 		}
 		array_unshift($categories, array(
@@ -344,6 +345,11 @@ class lumise_addon_designious_library extends lumise_addons {
 	{
 		$order = wc_get_order($orderId);
 		$refund = wc_get_order($refundId);
+	}
+
+	function disable_print_nav($nav)
+	{
+		return '';
 	}
 
 	function help()
