@@ -1,7 +1,7 @@
 <?php
 /*
 Name: Designious Library
-Version: 1.0
+Version: 1.1.1
 Compatible: 1.7
 */
 
