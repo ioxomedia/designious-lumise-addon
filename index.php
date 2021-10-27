@@ -1,7 +1,7 @@
 <?php
 /*
 Name: Designious Library
-Version: 1.1.1
+Version: 1.2.1
 Compatible: 1.7
 */
 
@@ -16,7 +16,6 @@ class lumise_addon_designious_library extends lumise_addons {
 		$this->access_corejs('lumise_addon_designiousLibrary');
 
 		$lumise->add_filter('editor_menus', [ &$this, 'editor_menus'  ], 20);
-		$lumise->add_filter('print-nav', [ &$this, 'disable_print_nav' ], 20);
 		$lumise->add_action('editor-header', [ &$this, 'editor_header' ], 20);
 		$lumise->add_action('editor-footer', [ &$this, 'editor_footer' ], 20);
 
@@ -139,6 +138,11 @@ class lumise_addon_designious_library extends lumise_addons {
 		global $lumise;
 
 		if (!$this->is_backend()) {
+			echo sprintf(
+				'<link rel="stylesheet" href="%s" type="text/css" media="all" />',
+				$this->get_url( 'assets/css/library-default.css?ver=1.2.1' )
+			);
+
 			$showInCliparts = isset($lumise->cfg->settings['designious_show_in_cliparts'])
 				? $lumise->cfg->settings['designious_show_in_cliparts']
 				: false;
@@ -238,11 +242,11 @@ class lumise_addon_designious_library extends lumise_addons {
 				'name' => $upstreamItem['filename'],
 				'order' => $idx,
 				'price' => null,
-				'resource' => 'designious',
-				'tags' => '',
+				'resource' => 'cliparts',
+				'tags' => 'designious',
 				'thumbnail_url' => $upstreamItem['secure_url'],
 				'use_count' => null,
-				'id' => $upstreamItem['etag'],
+				'id' => Api::ID_PREFIX . str_pad($upstreamItem['id'], 10, 0, STR_PAD_LEFT),
 				'upload' => $upstreamItem['secure_url']
 			];
 		}
@@ -345,11 +349,6 @@ class lumise_addon_designious_library extends lumise_addons {
 	{
 		$order = wc_get_order($orderId);
 		$refund = wc_get_order($refundId);
-	}
-
-	function disable_print_nav($nav)
-	{
-		return '';
 	}
 
 	function help()

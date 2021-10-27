@@ -7,7 +7,6 @@ function lumise_addon_designiousLibrary(lumise) {
             lumise.ops['designious_loading'] = true;
             lumise.xitems.load('designious', {
                 click: function (op, el) {
-                    debugger;
                     if (lumise.xitems.resources['designious'].url[op.id]) {
                         op.url = lumise.xitems.resources['designious'].url[op.id].replace(lumise.data.upload_url, '');
                         lumise.fn.preset_import([op], el, {});
@@ -37,7 +36,6 @@ function lumise_addon_designiousLibrary(lumise) {
                 lumise.ops['designious-cliparts_loading'] = true;
                 lumise.xitems.load('designious-cliparts', {
                     click: function (op, el) {
-                        debugger;
                         if (lumise.xitems.resources['designious-cliparts'].url[op.id]) {
                             op.url = lumise.xitems.resources['designious-cliparts'].url[op.id].replace(lumise.data.upload_url, '');
                             lumise.fn.preset_import([op], el, {});

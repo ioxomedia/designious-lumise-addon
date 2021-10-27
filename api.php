@@ -7,6 +7,8 @@ use WC_Order_Item;
 use WC_Order_Refund;
 
 class Api {
+	const ID_PREFIX = '90900';
+
 	const FOLDERS_ENDPOINT = '/api/folders/search';
 	const FILES_ENDPOINT = '/api/files/search';
 	const TRANSACTION_ENDPOINT = '/api/transactions';
@@ -65,10 +67,19 @@ class Api {
 			$data = $orderItem->get_meta('lumise_data');
 			if (is_array($data) && isset($data['resource']) && !empty($data['resource'])) {
 				$resources = $data['resource'];
-				foreach ($resources as $resource) {
-					if ($resource['type'] == 'designious') {
+				foreach ($resources as $index => $resource) {
+					$id = $resource['id'];
+					if ($resource['type'] == 'cliparts'
+					    && strpos($id, self::ID_PREFIX) !== false
+					    && strlen($id) === 15) {
 						$items[] = [
-							'reference_id' => $order->get_order_key() . '_' . $orderItem->get_id(),
+							'reference_id' => sprintf(
+								'%s_%s_%s_%s',
+								$order->get_order_key(),
+								$orderItem->get_id(),
+								$id,
+								$index
+							),
 							'quantity' => $orderItem->get_quantity()
 						];
 					}
@@ -93,11 +104,20 @@ class Api {
 			$data = $orderItem->get_meta('lumise_data');
 			if (is_array($data) && isset($data['resource']) && !empty($data['resource'])) {
 				$resources = $data['resource'];
-				foreach ($resources as $resource) {
-					if ($resource['type'] == 'designious') {
+				foreach ($resources as $index => $resource) {
+					$id = $resource['id'];
+					if ($resource['type'] == 'cliparts'
+					    && strpos($id, self::ID_PREFIX) !== false
+					    && strlen($id) === 15) {
 						$items[] = [
-							'reference_id' => $order->get_order_key() . '_' . $orderItem->get_id(),
-							'quantity' => $refundItem->get_quantity()
+							'reference_id' => sprintf(
+								'%s_%s_%s_%s',
+								$order->get_order_key(),
+								$orderItem->get_id(),
+								$id,
+								$index
+							),
+							'quantity' => $orderItem->get_quantity()
 						];
 					}
 				}
